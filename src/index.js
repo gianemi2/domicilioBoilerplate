@@ -2,6 +2,7 @@ import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
 
+import logo from './assets/logo.png'
 import './assets/styles/global.css';
 
 // Routes
@@ -22,7 +23,7 @@ export default class App extends Component {
 		isPopupOpen: false,
 		popupNumbers: [],
 	}
-	
+
 	handleRoute = e => {
 		this.currentUrl = e.url;
 		this.setState({ isHomepage: e.url.replace(/\?.*/g, "") === "/" });
@@ -37,7 +38,7 @@ export default class App extends Component {
 		})
 	}
 
-	closePopup = (e) => {	
+	closePopup = (e) => {
 		if (e.currentTarget === e.target) {
 			this.setState({ isPopupOpen: false })
 		}
@@ -56,14 +57,14 @@ export default class App extends Component {
 
 	componentDidUpdate() {
 		const { isPopupOpen } = this.state;
-		
+
 		const root = document.documentElement;
-		root.style.setProperty('--popup-visible', isPopupOpen ? 'hidden': 'initial')
+		root.style.setProperty('--popup-visible', isPopupOpen ? 'hidden' : 'initial')
 	}
 
 	render(props, { isHomepage, results, popupNumbers, isPopupOpen }) {
 		return (
-			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
+			<Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
 				<div id="app" class="px-5 max-w-screen-md mx-auto">
 					<nav class="flex justify-center md:justify-end items-center">
 						{
@@ -72,11 +73,8 @@ export default class App extends Component {
 								: <Link class="m-5 text-blue-500 hover:text-blue-800" href="/">Ritorna alla ricerca</Link>
 						}
 					</nav>
-					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
-						<span class="block sm:inline-block" role="img" aria-label="biker">
-							🚴
-						</span>
-						{`${process.env.PREACT_APP_CITY} a Domicilio`}
+					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize logo">
+						<img src={logo} alt={`Logo di ${process.env.PREACT_APP_CITY} a domicilio`} />
 					</h1>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />

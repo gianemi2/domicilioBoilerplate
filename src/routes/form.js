@@ -1,7 +1,51 @@
+import { load } from 'recaptcha-v3'
+
+let valid = false
+let TOKEN
+
+load(process.env.PREACT_APP_CAPTCHA_SITE_KEY).then((recaptcha) => {
+	recaptcha.execute()
+		.then((tok) => {
+			TOKEN = tok
+			valid = true
+		})
+		.catch((error) => {
+			console.error(error)
+		})
+})
+
+const handleFormSubmit = (e) => {
+	let data = {};
+
+	const form = e.target
+	const { elements } = form
+
+	for (const field of elements) {
+		data[field.name] = field.value
+	}
+
+	data.token = TOKEN
+
+	if (valid) {
+		fetch('http://localhost:3000/api/save', {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data) // body data type must match "Content-Type" header,
+		})
+			.then(res => res.json())
+			.then(res => console.log(res));
+	}
+
+	e.preventDefault()
+}
+
 export default function Form() {
+
 	return (
 		<div class="">
-			<form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+			<form name="contact" method="post" id="add-shop" onsubmit={(e) => handleFormSubmit(e)}>
 				<p>
 					<input type="hidden" name="form-name" value="contact" />
 				</p>
@@ -27,22 +71,22 @@ export default function Form() {
 				</p>
 				<p class="my-5">
 					<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Tipologia di servizio
-						<select class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="tipologia">
+						<select class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="type">
 							<option disabled selected>Seleziona una tipologia</option>
-							<option value="Salute">Salute</option>
-							<option value="gelateria">Gelateria</option>
-							<option value="macelleria">Macelleria</option>
+							<option value="salute">Salute</option>
+							<option value="gelaterie">Gelateria</option>
+							<option value="macellerie">Macelleria</option>
 							<option value="panifici">Panifici</option>
-							<option value="generi_alimentari">Generi Alimentari</option>
+							<option value="generi alimentari">Generi Alimentari</option>
 							<option value="ristorazione">Ristorazione</option>
-							<option value="pesce_fresco">Pesce Fresco</option>
-							<option value="enoteca_e_birre">Enoteca e Birre</option>
-							<option value="frutta_fresca">Frutta Fresca</option>
+							<option value="pesce fresco e surgelato">Pesce Fresco</option>
+							<option value="enoteca e birre">Enoteca e Birre</option>
+							<option value="frutta fresca">Frutta Fresca</option>
 							<option value="supermercati">Supermercati</option>
 							<option value="pasticceria">Pasticceria</option>
-							<option value="pizzeria">Pizzeria</option>
-							<option value="lavanderia">Lavanderia</option>
-							<option value="prodotti_per_animali">Prodotti per Animali</option>
+							<option value="pizzerie">Pizzeria</option>
+							<option value="lavanderie">Lavanderia</option>
+							<option value="prodotti e servizi per animali">Prodotti per Animali</option>
 						</select>
 					</label>
 				</p>
