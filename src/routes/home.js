@@ -14,11 +14,11 @@ export default class Home extends Component {
 	};
 
 	handleCategoryFilter = key => _ => { // eslint-disable-line no-unused-vars
-      if (key === this.state.categoryFilter) {
-         return this.setState({ categoryFilter: null });
-      }
-      this.setState({ categoryFilter: key });
-   };
+		if (key === this.state.categoryFilter) {
+			return this.setState({ categoryFilter: null });
+		}
+		this.setState({ categoryFilter: key });
+	};
 
 	filteredCategories(filter, categoryFilter) {
 		const { results } = this.props;
@@ -61,7 +61,7 @@ export default class Home extends Component {
 								key === categoryFilter
 									? "bg-blue-500 hover:bg-blue-500 text-white outline-none text-white"
 									: "bg-white hover:bg-blue-500 hover:text-white"
-							}`}
+								}`}
 						>
 							<span>{`${stores[key].icon} ${key}`}</span>
 						</button>
