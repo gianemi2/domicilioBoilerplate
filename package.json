@@ -36,6 +36,7 @@
       "preact-render-to-string": "^5.1.4",
       "preact-router": "^3.2.1",
       "react-ios-pwa-prompt": "^1.7.0",
-      "react-recaptcha-v3": "^1.1.0"
+      "react-recaptcha": "^2.3.10",
+      "react-recaptcha-google": "^1.1.1"
    }
 }

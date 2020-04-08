@@ -1,12 +1,4 @@
-import { ReCaptcha } from 'react-recaptcha-v3'
-
-let TOKEN;
-let valid = false
-
-const verifyCallback = (recaptchaToken) => {
-	// Here you will get the final recaptchaToken!!!  
-	TOKEN = recaptchaToken
-}
+import { route } from 'preact-router';
 
 const handleFormSubmit = (e) => {
 	let data = {};
@@ -18,20 +10,28 @@ const handleFormSubmit = (e) => {
 		data[field.name] = field.value
 	}
 
-	data.token = TOKEN
+	// eslint-disable-next-line no-undef
+	data.token = captchatoken
 
-	if (valid) {
-		fetch('https://api.6emme.it/api/save', {
-			method: 'POST', // *GET, POST, PUT, DELETE, etc.
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data) // body data type must match "Content-Type" header,
-		})
-			.then(res => res.json())
-			.then(res => console.log(res));
-	}
 
+	fetch(`${process.env.PREACT_APP_DATA_SOURCE}/api/save`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data) // body data type must match "Content-Type" header,
+	})
+		.then(res => res.json())
+		.then(res => {
+			if (res.success) {
+				alert('Negozio aggiunto con successo. Verrai reindirizzato alla homepage!');
+				route('/');
+				window.location.reload()
+
+			} else {
+				alert(`Errore imprevisto: ${res.message}`)
+			}
+		});
 	e.preventDefault()
 }
 
@@ -39,10 +39,6 @@ export default function Form() {
 
 	return (
 		<div>
-			<ReCaptcha
-				sitekey={process.env.PREACT_APP_CAPTCHA_SITE_KEY}
-				verifyCallback={verifyCallback}
-			/>
 			<div class="">
 				<form name="contact" method="post" id="add-shop" onsubmit={(e) => handleFormSubmit(e)}>
 					<p>

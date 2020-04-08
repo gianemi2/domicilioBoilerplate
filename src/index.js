@@ -1,7 +1,10 @@
 import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
-import { loadReCaptcha } from 'react-recaptcha-v3'
+
+
+import { loadReCaptcha } from 'react-recaptcha-google'
+
 
 import logo from './assets/logo.png'
 import './assets/styles/global.css';
@@ -46,15 +49,15 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
-		loadReCaptcha(process.env.PREACT_APP_CAPTCHA_SITE_KEY)
-		fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+		loadReCaptcha();
+		/* fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
 			.then(r => r.json())
 			.then(json => {
 				this.setState({
 					results: json,
 					resultBkp: json
 				});
-			});
+			}); */
 	}
 
 	componentDidUpdate() {
