@@ -50,14 +50,14 @@ export default class App extends Component {
 
 	componentDidMount() {
 		loadReCaptcha();
-		/* fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+		fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
 			.then(r => r.json())
 			.then(json => {
 				this.setState({
 					results: json,
 					resultBkp: json
 				});
-			}); */
+			});
 	}
 
 	componentDidUpdate() {
