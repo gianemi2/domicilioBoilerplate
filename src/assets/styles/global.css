@@ -40,6 +40,30 @@ body {
 	border-radius: 20px;
 }
 
+.logo {
+	text-align: center;
+	position: relative;
+}
+
+.logo img {
+	width: 400px;
+	margin: 0 auto;
+	max-width: 90%;
+	display: inline;
+	transition: 1s;
+}
+
+.logo img.dark {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.logo img.light {
+	opacity: 1;
+}
+
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg: #1a212d;
@@ -55,14 +79,12 @@ body {
 	.backdrop {
 		background-color: rgba(26, 33, 45, 0.8);
 	}
-}
 
-.logo {
-	text-align: center;
-}
+	.logo img.dark {
+		opacity: 1;
+	}
 
-.logo img {
-	width: 400px;
-	max-width: 90%;
-	display: inline;
+	.logo img.light {
+		opacity: 0;
+	}
 }

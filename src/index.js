@@ -7,6 +7,7 @@ import { loadReCaptcha } from 'react-recaptcha-google'
 
 
 import logo from './assets/logo.png'
+import logoDark from './assets/logo-dark.png'
 import './assets/styles/global.css';
 
 // Routes
@@ -79,7 +80,8 @@ export default class App extends Component {
 						}
 					</nav>
 					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize logo">
-						<img src={logo} alt={`Logo di ${process.env.PREACT_APP_CITY} a domicilio`} />
+						<img src={logo} className="light" alt={`Logo di ${process.env.PREACT_APP_CITY} a domicilio`} />
+						<img src={logoDark} className="dark" alt={`Logo di ${process.env.PREACT_APP_CITY} a domicilio. Versione chiara per sfondi scuri.`} />
 					</h1>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
