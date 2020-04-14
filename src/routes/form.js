@@ -35,7 +35,15 @@ const handleFormSubmit = (e) => {
 	e.preventDefault()
 }
 
-export default function Form() {
+export default function Form({ results }) {
+	let resultsArray = [];
+	for (const i in results) {
+		const element = results[i];
+		resultsArray.push({
+			name: i,
+			text: `${element.icon} ${i}`
+		})
+	}
 
 	return (
 		<div>
@@ -68,25 +76,9 @@ export default function Form() {
 						<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Tipologia di servizio
 						<select class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="type">
 								<option disabled selected>Seleziona una tipologia</option>
-								<option value="salute">Salute</option>
-								<option value="gelaterie">Gelateria</option>
-								<option value="macellerie">Macelleria</option>
-								<option value="panifici">Panifici</option>
-								<option value="generi alimentari">Generi Alimentari</option>
-								<option value="ristorazione">Ristorazione</option>
-								<option value="pesce fresco e surgelato">Pesce Fresco</option>
-								<option value="enoteca e birre">Enoteca e Birre</option>
-								<option value="frutta e verdura">Frutta e verdura</option>
-								<option value="supermercati">Supermercati</option>
-								<option value="pasticceria">Pasticceria</option>
-								<option value="pizzerie">Pizzeria</option>
-								<option value="lavanderie">Lavanderia</option>
-								<option value="prodotti e servizi per animali">Prodotti per Animali</option>
-								<option value="informatica">Informatica</option>
-								<option value="gastronomia e friggitoria">gastronomia e friggitoria</option>
-								<option value="prodotti per bambini">prodotti per bambini</option>
-								<option value="piante e fiori">piante e fiori</option>
-								<option value="senza glutine">senza glutine</option>
+								{
+									resultsArray.map(i => <option value={i.name}>{i.text}</option>)
+								}
 							</select>
 						</label>
 					</p>

@@ -51,14 +51,25 @@ export default class App extends Component {
 
 	componentDidMount() {
 		loadReCaptcha();
-		fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
-			.then(r => r.json())
-			.then(json => {
-				this.setState({
-					results: json,
-					resultBkp: json
+		if (location.hostname === "localhost") {
+			fetch(process.env.PREACT_APP_SAMPLE_DATA_SOURCE)
+				.then(r => r.json())
+				.then(json => {
+					this.setState({
+						results: json,
+						resultBkp: json
+					})
+				})
+		} else {
+			fetch(`${process.env.PREACT_APP_DATA_SOURCE}`)
+				.then(r => r.json())
+				.then(json => {
+					this.setState({
+						results: json,
+						resultBkp: json
+					});
 				});
-			});
+		}
 	}
 
 	componentDidUpdate() {
