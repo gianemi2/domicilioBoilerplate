@@ -85,7 +85,7 @@ export default class App extends Component {
 					</h1>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
-						<Form path="/form" />
+						<Form path="/form" results={results} />
 					</Router>
 				</div>
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} telNumbers={popupNumbers} />

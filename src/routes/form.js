@@ -76,12 +76,17 @@ export default function Form() {
 								<option value="ristorazione">Ristorazione</option>
 								<option value="pesce fresco e surgelato">Pesce Fresco</option>
 								<option value="enoteca e birre">Enoteca e Birre</option>
-								<option value="frutta fresca">Frutta Fresca</option>
+								<option value="frutta e verdura">Frutta e verdura</option>
 								<option value="supermercati">Supermercati</option>
 								<option value="pasticceria">Pasticceria</option>
 								<option value="pizzerie">Pizzeria</option>
 								<option value="lavanderie">Lavanderia</option>
 								<option value="prodotti e servizi per animali">Prodotti per Animali</option>
+								<option value="informatica">Informatica</option>
+								<option value="gastronomia e friggitoria">gastronomia e friggitoria</option>
+								<option value="prodotti per bambini">prodotti per bambini</option>
+								<option value="piante e fiori">piante e fiori</option>
+								<option value="senza glutine">senza glutine</option>
 							</select>
 						</label>
 					</p>
