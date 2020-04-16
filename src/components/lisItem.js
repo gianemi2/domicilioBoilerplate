@@ -28,7 +28,7 @@ export const ListItem = ({ name, tel, site, mail, note, newEntry }) => {
 							role="img"
 							aria-label="warning"
 						>
-							⚠️
+							ℹ️
 						</span>
 					)}
 					{site && (
@@ -38,7 +38,7 @@ export const ListItem = ({ name, tel, site, mail, note, newEntry }) => {
 								role="img"
 								aria-label="website"
 							>
-							🌐
+								🌐
 							</span>
 						</a>
 					)}
@@ -49,7 +49,7 @@ export const ListItem = ({ name, tel, site, mail, note, newEntry }) => {
 								role="img"
 								aria-label="e-mail"
 							>
-							✉️
+								✉️
 							</span>
 						</a>
 					)}
@@ -60,7 +60,7 @@ export const ListItem = ({ name, tel, site, mail, note, newEntry }) => {
 								role="img"
 								aria-label="telephone"
 							>
-							📞
+								📞
 							</span>
 						</a>
 					)}
