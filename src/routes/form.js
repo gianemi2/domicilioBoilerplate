@@ -10,10 +10,6 @@ const handleFormSubmit = (e) => {
 		data[field.name] = field.value
 	}
 
-	// eslint-disable-next-line no-undef
-	data.token = captchatoken
-
-
 	fetch(`${process.env.PREACT_APP_DATA_SOURCE}/api/save`, {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		headers: {
@@ -69,7 +65,8 @@ export default function Form({ results }) {
 					</p>
 					<p class="my-5">
 						<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Sito Web
-						<input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" name="site" />
+						<input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="url" name="site" />
+							<small>Inserisci il link del sito web. Esempio: https://nomesito.it</small>
 						</label>
 					</p>
 					<p class="my-5">
@@ -89,6 +86,14 @@ export default function Form({ results }) {
 					<p class="my-5">
 						<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Note
 						<textarea class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" name="note" />
+						</label>
+					</p>
+					<p class="input-alt-mg">
+						<label>
+							{
+								// Honeypot
+							}Cognome
+							<input type="text" name="cognome" autocomplete="off" />
 						</label>
 					</p>
 					<p class="my-5">
