@@ -55,7 +55,8 @@ export default function Form({ results }) {
 					</p>
 					<p class="my-5">
 						<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Numero di telefono (facoltativo)
-						<input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" inputmode="numeric" name="tel" />
+						<input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="tel" inputmode="numeric" name="tel" />
+						<small>Inserisci il numero di telefono dove vuoi essere contattato. Es: 0586123456 oppure 3291234567</small>
 						</label>
 					</p>
 					<p class="my-5">
