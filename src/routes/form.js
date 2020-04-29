@@ -56,7 +56,7 @@ export default function Form({ results }) {
 					<p class="my-5">
 						<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Numero di telefono (facoltativo)
 						<input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="tel" inputmode="numeric" name="tel" />
-						<small>Inserisci il numero di telefono dove vuoi essere contattato. Es: 0586123456 oppure 3291234567</small>
+							<small>Inserisci il numero di telefono dove vuoi essere contattato. Es: 0586123456 oppure 3291234567</small>
 						</label>
 					</p>
 					<p class="my-5">
@@ -95,6 +95,13 @@ export default function Form({ results }) {
 								// Honeypot
 							}Cognome
 							<input type="text" name="cognome" autocomplete="off" />
+						</label>
+					</p>
+					<p>
+						<label>
+							<input style="margin-right: 10px" type="checkbox" name="privacy" required />
+							L’ azienda provvederà a fornire il servizio in totale autonomia e lo Studio non è in alcun modo responsabile della correttezza delle informazioni inserite dalle Aziende, della regolarità dei servizi resi, dei prezzi stabiliti e della corretta esecuzione degli ordini e delle consegne.
+							Lo Studio declina, altresì, ogni responsabilità derivante dal mancato rispetto da parte delle Aziende delle prescrizioni indicate nei DPCM relativi al periodo emergenziale e/o in qualsiasi altra Legge o Provvedimento emanato dalle Autorità.
 						</label>
 					</p>
 					<p class="my-5">

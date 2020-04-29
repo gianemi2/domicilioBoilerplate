@@ -1,9 +1,7 @@
 import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
-
-
-import { loadReCaptcha } from 'react-recaptcha-google'
+import CookieConsent from "react-cookie-consent";
 
 
 import logo from './assets/logo.png'
@@ -50,7 +48,6 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
-		loadReCaptcha();
 		if (location.hostname === "localhost") {
 			fetch(process.env.PREACT_APP_SAMPLE_DATA_SOURCE)
 				.then(r => r.json())
@@ -100,6 +97,12 @@ export default class App extends Component {
 					</Router>
 				</div>
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} telNumbers={popupNumbers} />
+				<CookieConsent
+					location="bottom"
+					buttonText="Ok, ho letto."
+				>
+					<a style="text-decoration: underline;" target="_blank" rel="noopener noreferrer" href="https://api.6emme.it/livornoadomicilio/informativa.pdf">Dichiaro di aver preso visione dell'informativa</a> e mi assumo ogni responsabilità inerente al servizio offerto
+				</CookieConsent>
 				<PWAPrompt />
 			</Action.Provider>
 		);
